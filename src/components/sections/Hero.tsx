@@ -74,7 +74,7 @@ export function Hero() {
       className="h-screen flex items-center justify-center px-4 md:px-12 lg:px-20"
     >
       {/* Text content - more centered */}
-      <div className="w-full md:w-2/3 lg:w-1/2 flex flex-col items-start text-left md:ml-[5%] lg:ml-[10%]">
+      <div className="w-full md:w-2/3 lg:w-[55%] flex flex-col items-start text-left md:ml-[10%] lg:ml-[15%]">
         <h1
           ref={titleRef}
           className="text-6xl md:text-8xl lg:text-9xl font-light tracking-tight text-neutral-800"
@@ -84,7 +84,7 @@ export function Hero() {
         </h1>
         <p
           ref={subtitleRef}
-          className="mt-6 text-xl md:text-2xl lg:text-3xl text-neutral-600 max-w-xl leading-relaxed"
+          className="mt-6 text-2xl md:text-3xl lg:text-4xl text-neutral-600 max-w-2xl leading-relaxed"
         >
           AI-powered automation that gives you back your most valuable asset
         </p>
