@@ -40,10 +40,25 @@ export function Navigation() {
         saivetime
       </a>
       <a
-        href="#contact"
-        className="px-6 py-2 bg-[#ff5a36] text-white rounded-full hover:bg-[#ff8a6c] transition-colors text-sm font-medium"
+        href="https://calendly.com/your-calendar"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="px-5 py-2 bg-[#ff5a36] text-white rounded-full hover:bg-[#ff8a6c] transition-colors text-sm font-medium inline-flex items-center gap-1.5"
       >
-        Let's Talk
+        Let&apos;s Talk
+        <svg
+          className="w-3.5 h-3.5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M7 17L17 7M17 7H7M17 7v10"
+          />
+        </svg>
       </a>
     </nav>
   );

@@ -3,8 +3,9 @@
 import dynamic from "next/dynamic";
 import { Navigation } from "@/components/ui/Navigation";
 import { Hero } from "@/components/sections/Hero";
-import { Journey } from "@/components/sections/Journey";
 import { Services } from "@/components/sections/Services";
+import { Process } from "@/components/sections/Process";
+import { CaseStudies } from "@/components/sections/CaseStudies";
 import { About } from "@/components/sections/About";
 import { CTA } from "@/components/sections/CTA";
 
@@ -31,8 +32,9 @@ export default function Home() {
       <Scene>
         <div className="w-screen">
           <Hero />
-          <Journey />
           <Services />
+          <Process />
+          <CaseStudies />
           <About />
           <CTA />
         </div>

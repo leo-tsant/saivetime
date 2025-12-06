@@ -6,15 +6,24 @@ import { gsap, useGSAP } from "@/lib/gsap";
 const services = [
   {
     title: "Workflow Automation",
-    description: "Eliminate manual processes and let AI handle the repetitive work.",
+    description:
+      "Transform repetitive tasks into intelligent, self-running processes. From data entry to complex multi-step workflows, we build systems that work 24/7 so your team can focus on what matters.",
+    icon: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15",
+    features: ["Process Mapping", "API Integration", "Error Handling"],
   },
   {
     title: "Custom AI Solutions",
-    description: "Tailored automation systems designed for your specific needs.",
+    description:
+      "Purpose-built AI systems designed around your unique business challenges. We don't do one-size-fits-all — every solution is crafted to integrate perfectly with your existing tools and workflows.",
+    icon: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+    features: ["Machine Learning", "Natural Language", "Predictive Analytics"],
   },
   {
     title: "Process Optimization",
-    description: "Identify bottlenecks and implement intelligent improvements.",
+    description:
+      "We analyze your operations to find hidden inefficiencies and implement intelligent improvements. Data-driven insights reveal opportunities you didn't know existed.",
+    icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
+    features: ["Bottleneck Analysis", "KPI Tracking", "Continuous Improvement"],
   },
 ];
 
@@ -24,78 +33,72 @@ export function Services() {
   const cardsRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
+    gsap.set(titleRef.current, { opacity: 1, y: 0 });
     const cards = cardsRef.current?.children;
-    if (!cards) return;
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 70%",
-        end: "top 20%",
-        scrub: 1,
-      },
-    });
-
-    tl.fromTo(
-      titleRef.current,
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0 }
-    );
-
-    Array.from(cards).forEach((card, index) => {
-      tl.fromTo(
-        card,
-        { opacity: 0, y: 40 },
-        { opacity: 1, y: 0 },
-        `-=${0.3}`
-      );
-    });
-
-    // Fade out
-    const fadeOutTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "center center",
-        end: "bottom top",
-        scrub: 1,
-      },
-    });
-
-    fadeOutTl.to([titleRef.current, ...Array.from(cards)], {
-      opacity: 0,
-      y: -30,
-      stagger: 0.1,
-    });
+    if (cards) {
+      gsap.set(Array.from(cards), { opacity: 1, y: 0 });
+    }
   }, []);
 
   return (
     <section
       ref={containerRef}
-      className="min-h-screen flex flex-col items-center justify-center px-4 py-20"
+      className="h-screen flex items-center px-4 md:px-12 lg:px-20 py-12 overflow-hidden"
     >
-      <h2
-        ref={titleRef}
-        className="text-3xl md:text-4xl lg:text-5xl font-light text-neutral-800 mb-16 text-center"
-      >
-        What we do
-      </h2>
-      <div
-        ref={cardsRef}
-        className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl w-full"
-      >
-        {services.map((service, index) => (
-          <div
-            key={index}
-            className="p-8 rounded-2xl bg-white/50 backdrop-blur-sm border border-neutral-200/50 hover:border-[#ff5a36]/30 transition-colors"
-          >
-            <h3 className="text-xl font-medium text-neutral-800 mb-4">
-              {service.title}
-            </h3>
-            <p className="text-neutral-600 leading-relaxed">
-              {service.description}
-            </p>
-          </div>
-        ))}
+      <div className="w-full md:w-2/3 lg:w-3/5 md:ml-[5%] lg:ml-[8%]">
+        <h2
+          ref={titleRef}
+          className="text-3xl md:text-4xl lg:text-5xl font-light text-neutral-800 mb-4"
+        >
+          What we do
+        </h2>
+        <p className="text-neutral-500 mb-6 text-base">
+          End-to-end automation solutions
+        </p>
+        <div ref={cardsRef} className="flex flex-col gap-4">
+          {services.map((service, index) => (
+            <div
+              key={index}
+              className="group relative p-5 rounded-2xl bg-gradient-to-br from-white/70 to-white/30 backdrop-blur-md border border-white/50 hover:border-neutral-300 transition-all duration-500 hover:shadow-xl"
+            >
+              {/* Icon */}
+              <div className="absolute top-5 right-5 w-10 h-10 rounded-xl bg-gradient-to-br from-neutral-800 to-neutral-900 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                <svg
+                  className="w-5 h-5 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d={service.icon}
+                  />
+                </svg>
+              </div>
+
+              <h3 className="text-lg md:text-xl font-medium text-neutral-800 mb-2 pr-16">
+                {service.title}
+              </h3>
+              <p className="text-neutral-600 text-sm leading-relaxed mb-3 pr-6 line-clamp-2">
+                {service.description}
+              </p>
+
+              {/* Feature tags */}
+              <div className="flex flex-wrap gap-1.5">
+                {service.features.map((feature, idx) => (
+                  <span
+                    key={idx}
+                    className="text-xs font-medium text-neutral-500 bg-neutral-100/80 px-2.5 py-1 rounded-full"
+                  >
+                    {feature}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

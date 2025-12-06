@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
-import { Button } from "@/components/ui/Button";
 
 export function CTA() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -29,7 +28,7 @@ export function CTA() {
     <section
       ref={containerRef}
       id="contact"
-      className="min-h-screen flex flex-col items-center justify-center px-4 py-20"
+      className="h-screen flex flex-col items-center justify-center px-4 py-12"
     >
       <div
         ref={contentRef}
@@ -39,17 +38,30 @@ export function CTA() {
           Ready to save time?
         </h2>
         <p className="text-lg md:text-xl text-neutral-600 mb-12 leading-relaxed">
-          Let's discuss how AI automation can transform your business
-          and give you back the hours you've been losing.
+          Let&apos;s discuss how AI automation can transform your business
+          and give you back the hours you&apos;ve been losing.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button href="#" variant="primary">
-            Let's Talk
-          </Button>
-          <Button href="mailto:hello@saivetime.com" variant="secondary">
-            Send Email
-          </Button>
-        </div>
+        <a
+          href="https://calendly.com/your-calendar"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-8 py-4 bg-[#ff5a36] text-white rounded-full font-medium hover:bg-[#ff8a6c] hover:shadow-lg hover:shadow-[#ff5a36]/25 transition-all duration-300"
+        >
+          Let&apos;s Talk
+          <svg
+            className="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M7 17L17 7M17 7H7M17 7v10"
+            />
+          </svg>
+        </a>
       </div>
     </section>
   );

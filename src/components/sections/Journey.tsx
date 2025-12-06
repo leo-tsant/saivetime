@@ -48,21 +48,24 @@ export function Journey() {
   return (
     <section
       ref={containerRef}
-      className="h-screen flex flex-col items-center justify-center text-center px-4"
+      className="h-screen flex items-center px-4 md:px-12 lg:px-20"
     >
-      <h2
-        ref={titleRef}
-        className="text-4xl md:text-5xl lg:text-6xl font-light text-neutral-800 mb-8"
-      >
-        Enter the future
-      </h2>
-      <p
-        ref={textRef}
-        className="text-lg md:text-xl text-neutral-600 max-w-xl leading-relaxed"
-      >
-        We harness the power of AI to automate repetitive tasks, streamline
-        workflows, and unlock hours of productive time for your team.
-      </p>
+      {/* Content on left side - leaving space for hourglass on right */}
+      <div className="w-full md:w-2/3 lg:w-1/2 md:ml-[5%] lg:ml-[10%]">
+        <h2
+          ref={titleRef}
+          className="text-4xl md:text-5xl lg:text-6xl font-light text-neutral-800 mb-8"
+        >
+          Enter the future
+        </h2>
+        <p
+          ref={textRef}
+          className="text-lg md:text-xl text-neutral-600 max-w-xl leading-relaxed"
+        >
+          We harness the power of AI to automate repetitive tasks, streamline
+          workflows, and unlock hours of productive time for your team.
+        </p>
+      </div>
     </section>
   );
 }

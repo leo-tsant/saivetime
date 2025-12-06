@@ -2,7 +2,7 @@
 
 import { Canvas } from "@react-three/fiber";
 import { ScrollControls, Scroll, Preload } from "@react-three/drei";
-import { Suspense } from "react";
+import { Suspense, useMemo } from "react";
 import { ElegantTorus } from "./ElegantTorus";
 import { ScrollCamera } from "./ScrollCamera";
 import { Lighting } from "./Lighting";
@@ -12,15 +12,18 @@ interface SceneContentProps {
 }
 
 function SceneContent({ children }: SceneContentProps) {
+  // Memoize children to prevent unnecessary re-renders that cause createRoot issues
+  const memoizedChildren = useMemo(() => children, [children]);
+
   return (
-    <ScrollControls pages={5} damping={0.25}>
+    <ScrollControls pages={6} damping={0.1}>
       {/* 3D Content */}
       <ElegantTorus />
       <ScrollCamera />
 
       {/* HTML Content overlay */}
       <Scroll html style={{ width: "100%" }}>
-        {children}
+        {memoizedChildren}
       </Scroll>
     </ScrollControls>
   );

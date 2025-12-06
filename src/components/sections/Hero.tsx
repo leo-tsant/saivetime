@@ -7,6 +7,7 @@ export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const ctaRef = useRef<HTMLAnchorElement>(null);
   const scrollIndicatorRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
@@ -24,6 +25,12 @@ export function Hero() {
         { opacity: 0, y: 30 },
         { opacity: 1, y: 0, duration: 1, ease: "power3.out" },
         "-=0.6"
+      )
+      .fromTo(
+        ctaRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+        "-=0.4"
       )
       .fromTo(
         scrollIndicatorRef.current,
@@ -50,6 +57,11 @@ export function Hero() {
         "<0.1"
       )
       .to(
+        ctaRef.current,
+        { opacity: 0, y: -30, ease: "power2.in" },
+        "<"
+      )
+      .to(
         scrollIndicatorRef.current,
         { opacity: 0, ease: "power2.in" },
         "<"
@@ -65,17 +77,39 @@ export function Hero() {
       <div className="w-full md:w-2/3 lg:w-1/2 flex flex-col items-start text-left md:ml-[5%] lg:ml-[10%]">
         <h1
           ref={titleRef}
-          className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-neutral-800"
+          className="text-6xl md:text-8xl lg:text-9xl font-light tracking-tight text-neutral-800"
           style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}
         >
           saivetime
         </h1>
         <p
           ref={subtitleRef}
-          className="mt-6 text-lg md:text-xl lg:text-2xl text-neutral-600 max-w-lg leading-relaxed"
+          className="mt-6 text-xl md:text-2xl lg:text-3xl text-neutral-600 max-w-xl leading-relaxed"
         >
           AI-powered automation that gives you back your most valuable asset
         </p>
+        <a
+          ref={ctaRef}
+          href="https://calendly.com/your-calendar"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-8 inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white rounded-full text-lg font-medium hover:bg-neutral-800 transition-colors"
+        >
+          Let&apos;s talk
+          <svg
+            className="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M7 17L17 7M17 7H7M17 7v10"
+            />
+          </svg>
+        </a>
         <div
           ref={scrollIndicatorRef}
           className="mt-12 flex flex-col items-start gap-2 text-neutral-400"
