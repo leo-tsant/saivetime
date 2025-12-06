@@ -105,9 +105,7 @@ export function AnimatedLinesBackground() {
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
-          count={PARTICLE_COUNT}
-          array={positions}
-          itemSize={3}
+          args={[positions, 3]}
         />
       </bufferGeometry>
       <pointsMaterial
