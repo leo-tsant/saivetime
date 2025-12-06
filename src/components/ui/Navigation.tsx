@@ -1,20 +1,21 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
+
+// Page positions: Hero=0, AboutSaivetime=1, About(Team)=2, Services=3, Testimonials=4, CTA=5
+const navLinks = [
+  { label: "About", href: "#about-saivetime", page: 1.0 },
+  { label: "Team", href: "#about", page: 2.0 },
+  { label: "Services", href: "#services", page: 3.0 },
+  { label: "Testimonials", href: "#testimonials", page: 4.0 },
+];
+
+const TOTAL_PAGES = 6;
 
 export function Navigation() {
   const navRef = useRef<HTMLElement>(null);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const [scrollContainer, setScrollContainer] = useState<HTMLElement | null>(null);
 
   useGSAP(() => {
     gsap.fromTo(
@@ -24,30 +25,124 @@ export function Navigation() {
     );
   }, []);
 
+  // Find the scroll container on mount
+  useEffect(() => {
+    const findScrollContainer = () => {
+      // ScrollControls from drei creates a div with overflow: auto
+      // It's inside the fixed canvas container
+      const fixedContainer = document.querySelector(".fixed.inset-0");
+      if (fixedContainer) {
+        const allDivs = fixedContainer.querySelectorAll("div");
+        for (const div of allDivs) {
+          const style = window.getComputedStyle(div);
+          if (style.overflow === "auto" || style.overflowY === "auto" || style.overflowY === "scroll") {
+            if (div.scrollHeight > div.clientHeight) {
+              setScrollContainer(div as HTMLElement);
+              return;
+            }
+          }
+        }
+      }
+    };
+
+    // Try immediately and also after a delay (for when scene loads)
+    findScrollContainer();
+    const timeout = setTimeout(findScrollContainer, 1000);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    targetPage: number
+  ) => {
+    e.preventDefault();
+
+    if (!scrollContainer) {
+      // Try to find it again
+      const fixedContainer = document.querySelector(".fixed.inset-0");
+      if (fixedContainer) {
+        const allDivs = fixedContainer.querySelectorAll("div");
+        for (const div of allDivs) {
+          const style = window.getComputedStyle(div);
+          if (style.overflow === "auto" || style.overflowY === "auto") {
+            if (div.scrollHeight > div.clientHeight) {
+              animateScroll(div as HTMLElement, targetPage);
+              return;
+            }
+          }
+        }
+      }
+      return;
+    }
+
+    animateScroll(scrollContainer, targetPage);
+  };
+
+  const animateScroll = (container: HTMLElement, targetPage: number) => {
+    const totalHeight = container.scrollHeight - container.clientHeight;
+    // Each section is 1 page (100vh), so targetPage directly maps to section
+    const targetScroll = (targetPage / (TOTAL_PAGES - 1)) * totalHeight;
+    const startScroll = container.scrollTop;
+    const distance = targetScroll - startScroll;
+    const duration = 1200;
+    let startTime: number | null = null;
+
+    const easeInOutCubic = (t: number): number => {
+      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    };
+
+    const animate = (currentTime: number) => {
+      if (startTime === null) startTime = currentTime;
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easedProgress = easeInOutCubic(progress);
+
+      container.scrollTop = startScroll + distance * easedProgress;
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  };
+
   return (
     <nav
       ref={navRef}
-      className={`fixed top-0 left-0 right-0 z-50 px-6 py-4 flex justify-between items-center transition-all duration-300 ${
-        isScrolled
-          ? "bg-[#f5f0eb]/80 backdrop-blur-md shadow-sm"
-          : "bg-transparent"
-      }`}
+      className="absolute top-0 left-0 right-0 z-50 px-8 lg:px-12 py-6 flex justify-between items-center"
     >
       <a
         href="/"
-        className="text-xl font-light text-neutral-800 hover:text-[#ff5a36] transition-colors"
+        className="text-2xl font-light text-neutral-800 hover:text-[#ff5a36] transition-colors"
       >
         saivetime
       </a>
+
+      {/* Navigation Links */}
+      <div className="hidden lg:flex items-center gap-10">
+        {navLinks.map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            onClick={(e) => handleNavClick(e, link.page)}
+            className="text-base text-neutral-600 hover:text-neutral-900 transition-colors font-light cursor-pointer"
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+
       <a
         href="https://calendly.com/your-calendar"
         target="_blank"
         rel="noopener noreferrer"
-        className="px-5 py-2 bg-[#ff5a36] text-white rounded-full hover:bg-[#ff8a6c] transition-colors text-sm font-medium inline-flex items-center gap-1.5"
+        className="px-6 py-2.5 bg-[#ff5a36] text-white rounded-full hover:bg-[#ff8a6c] transition-colors text-base font-medium inline-flex items-center gap-2"
       >
         Let&apos;s Talk
         <svg
-          className="w-3.5 h-3.5"
+          className="w-4 h-4"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"

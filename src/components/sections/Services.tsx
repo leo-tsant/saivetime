@@ -43,6 +43,7 @@ export function Services() {
   return (
     <section
       ref={containerRef}
+      id="services"
       className="h-screen flex items-center px-4 md:px-12 lg:px-20 py-12 overflow-hidden"
     >
       <div className="w-full md:w-2/3 lg:w-3/5 md:ml-[5%] lg:ml-[8%]">
@@ -50,7 +51,7 @@ export function Services() {
           ref={titleRef}
           className="text-3xl md:text-4xl lg:text-5xl font-light text-neutral-800 mb-4"
         >
-          What we do
+          Our Services
         </h2>
         <p className="text-neutral-500 mb-6 text-base">
           End-to-end automation solutions

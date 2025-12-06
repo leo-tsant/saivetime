@@ -3,10 +3,10 @@
 import dynamic from "next/dynamic";
 import { Navigation } from "@/components/ui/Navigation";
 import { Hero } from "@/components/sections/Hero";
-import { Services } from "@/components/sections/Services";
-import { Process } from "@/components/sections/Process";
-import { CaseStudies } from "@/components/sections/CaseStudies";
+import { AboutSaivetime } from "@/components/sections/AboutSaivetime";
 import { About } from "@/components/sections/About";
+import { Services } from "@/components/sections/Services";
+import { Testimonials } from "@/components/sections/Testimonials";
 import { CTA } from "@/components/sections/CTA";
 
 // Dynamically import the Scene component to avoid SSR issues with Three.js
@@ -28,14 +28,14 @@ const Scene = dynamic(
 export default function Home() {
   return (
     <main className="relative">
-      <Navigation />
       <Scene>
         <div className="w-screen">
+          <Navigation />
           <Hero />
-          <Services />
-          <Process />
-          <CaseStudies />
+          <AboutSaivetime />
           <About />
+          <Services />
+          <Testimonials />
           <CTA />
         </div>
       </Scene>

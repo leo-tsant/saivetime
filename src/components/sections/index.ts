@@ -1,6 +1,7 @@
 export { Hero } from "./Hero";
-export { Services } from "./Services";
-export { Process } from "./Process";
+export { AboutSaivetime } from "./AboutSaivetime";
 export { CaseStudies } from "./CaseStudies";
 export { About } from "./About";
+export { Services } from "./Services";
+export { Testimonials } from "./Testimonials";
 export { CTA } from "./CTA";

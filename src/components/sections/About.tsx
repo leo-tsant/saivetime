@@ -34,6 +34,7 @@ export function About() {
   return (
     <section
       ref={containerRef}
+      id="about"
       className="h-screen flex items-center px-4 md:px-12 lg:px-20 py-12 overflow-hidden"
     >
       <div className="w-full md:w-2/3 lg:w-3/5 md:ml-[5%] lg:ml-[8%]">
@@ -51,13 +52,13 @@ export function About() {
             >
               {/* Photo placeholder */}
               <div className="relative flex-shrink-0">
-                <div className="w-24 h-32 md:w-28 md:h-36 rounded-xl bg-gradient-to-br from-neutral-200 via-neutral-100 to-neutral-300 flex items-center justify-center shadow-xl overflow-hidden">
-                  <span className="text-3xl md:text-4xl font-light text-neutral-400">
+                <div className="w-32 h-44 md:w-40 md:h-52 rounded-xl bg-gradient-to-br from-neutral-200 via-neutral-100 to-neutral-300 flex items-center justify-center shadow-xl overflow-hidden">
+                  <span className="text-4xl md:text-5xl font-light text-neutral-400">
                     {founder.initials}
                   </span>
                 </div>
                 {/* Decorative accent */}
-                <div className="absolute -bottom-1.5 -right-1.5 w-6 h-6 bg-neutral-900 rounded-md" />
+                <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-neutral-900 rounded-md" />
               </div>
 
               {/* Info */}
