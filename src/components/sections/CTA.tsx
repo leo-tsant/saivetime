@@ -28,7 +28,7 @@ export function CTA() {
     <section
       ref={containerRef}
       id="contact"
-      className="h-screen flex flex-col items-center justify-center px-4 py-12"
+      className="h-screen flex flex-col items-center justify-center px-4 py-12 relative"
     >
       <div
         ref={contentRef}
@@ -63,6 +63,13 @@ export function CTA() {
           </svg>
         </a>
       </div>
+
+      {/* Footer */}
+      <footer className="absolute bottom-8 left-0 right-0 text-center">
+        <p className="text-sm text-neutral-400">
+          © {new Date().getFullYear()} saivetime. All rights reserved.
+        </p>
+      </footer>
     </section>
   );
 }

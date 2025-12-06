@@ -6,6 +6,7 @@ import { Suspense, useMemo } from "react";
 import { ElegantTorus } from "./ElegantTorus";
 import { ScrollCamera } from "./ScrollCamera";
 import { Lighting } from "./Lighting";
+import { AnimatedLinesBackground } from "./AnimatedLinesBackground";
 
 interface SceneContentProps {
   children?: React.ReactNode;
@@ -17,6 +18,9 @@ function SceneContent({ children }: SceneContentProps) {
 
   return (
     <ScrollControls pages={6} damping={0.1}>
+      {/* Falling sand background - inside ScrollControls for scroll access */}
+      <AnimatedLinesBackground />
+
       {/* 3D Content */}
       <ElegantTorus />
       <ScrollCamera />
