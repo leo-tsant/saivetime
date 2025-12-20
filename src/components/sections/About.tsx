@@ -7,14 +7,16 @@ const founders = [
   {
     name: "Leo Tsantarliotis",
     role: "Co-Founder",
-    initials: "LT",
-    bio: "Passionate about leveraging cutting-edge AI to transform how businesses operate. With a background in software engineering and automation, Leo brings technical expertise and vision to every project.",
+    image: "/leo.png",
+    imagePosition: "center",
+    bio: "Drives business strategy and client relationships. Leo focuses on understanding what businesses truly need and translating that into automation solutions that deliver measurable results.",
   },
   {
     name: "Spilios Spiliopoulos",
     role: "Co-Founder",
-    initials: "SS",
-    bio: "A strategic thinker with deep experience in business process optimization. Spilios focuses on understanding client needs and translating them into powerful automation solutions that deliver real results.",
+    image: "/spilios.jpg",
+    imagePosition: "top",
+    bio: "Leads technical development and system architecture. Spilios builds the AI and automation infrastructure that powers our solutions, ensuring reliability and performance at scale.",
   },
 ];
 
@@ -50,12 +52,15 @@ export function About() {
               key={index}
               className="flex flex-col md:flex-row gap-5 items-start"
             >
-              {/* Photo placeholder */}
+              {/* Photo */}
               <div className="relative flex-shrink-0">
-                <div className="w-32 h-44 md:w-40 md:h-52 rounded-xl bg-gradient-to-br from-neutral-200 via-neutral-100 to-neutral-300 flex items-center justify-center shadow-xl overflow-hidden">
-                  <span className="text-4xl md:text-5xl font-light text-neutral-400">
-                    {founder.initials}
-                  </span>
+                <div className="w-32 h-32 md:w-40 md:h-40 rounded-xl bg-gradient-to-br from-neutral-200 via-neutral-100 to-neutral-300 shadow-xl overflow-hidden">
+                  <img
+                    src={founder.image}
+                    alt={founder.name}
+                    className="w-full h-full object-cover"
+                    style={{ objectPosition: founder.imagePosition }}
+                  />
                 </div>
                 {/* Decorative accent */}
                 <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-neutral-900 rounded-md" />

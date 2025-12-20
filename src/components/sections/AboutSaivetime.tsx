@@ -47,13 +47,13 @@ export function AboutSaivetime() {
         <div ref={contentRef}>
           <p className="text-neutral-600 text-lg leading-relaxed mb-8 max-w-2xl">
             We&apos;re an AI automation agency that helps businesses reclaim their most
-            valuable resource — time. By combining cutting-edge artificial intelligence
+            valuable resource: time. By combining cutting-edge artificial intelligence
             with deep process expertise, we transform manual, repetitive workflows into
             intelligent systems that run themselves.
           </p>
           <p className="text-neutral-500 text-base leading-relaxed mb-10 max-w-2xl">
             Whether you&apos;re drowning in data entry, struggling with complex workflows,
-            or looking to scale without scaling headcount — we build custom solutions
+            or looking to scale without scaling headcount, we build custom solutions
             that give your team the freedom to focus on what truly matters.
           </p>
 
