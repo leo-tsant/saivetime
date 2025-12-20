@@ -42,7 +42,7 @@ export function CTA() {
           and give you back the hours you&apos;ve been losing.
         </p>
         <a
-          href="https://calendly.com/your-calendar"
+          href="https://calendly.com/saivetime/30min"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-8 py-4 bg-[#ff5a36] text-white rounded-full font-medium hover:bg-[#ff8a6c] hover:shadow-lg hover:shadow-[#ff5a36]/25 transition-all duration-300"

@@ -135,7 +135,7 @@ export function Navigation() {
       </div>
 
       <a
-        href="https://calendly.com/your-calendar"
+        href="https://calendly.com/saivetime/30min"
         target="_blank"
         rel="noopener noreferrer"
         className="px-6 py-2.5 bg-[#ff5a36] text-white rounded-full hover:bg-[#ff8a6c] transition-colors text-base font-medium inline-flex items-center gap-2"

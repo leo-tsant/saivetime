@@ -90,7 +90,7 @@ export function Hero() {
         </p>
         <a
           ref={ctaRef}
-          href="https://calendly.com/your-calendar"
+          href="https://calendly.com/saivetime/30min"
           target="_blank"
           rel="noopener noreferrer"
           className="mt-8 inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white rounded-full text-lg font-medium hover:bg-neutral-800 transition-colors"
