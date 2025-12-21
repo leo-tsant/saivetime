@@ -8,19 +8,11 @@ export function CTA() {
   const contentRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 70%",
-        end: "top 30%",
-        scrub: 1,
-      },
-    });
-
-    tl.fromTo(
+    // Simple fade in on mount - no scroll trigger dependency
+    gsap.fromTo(
       contentRef.current,
-      { opacity: 0, y: 60, scale: 0.95 },
-      { opacity: 1, y: 0, scale: 1 }
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
     );
   }, []);
 

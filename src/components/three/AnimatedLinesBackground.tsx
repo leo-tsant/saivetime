@@ -66,7 +66,8 @@ export function AnimatedLinesBackground() {
     const posAttr = geometry.attributes.position;
 
     // Calculate opacity based on scroll - visible at top and bottom only
-    const scrollOffset = scroll.offset;
+    // Clamp to valid range [0, 1] to prevent errors during Safari bounce-back
+    const scrollOffset = Math.max(0, Math.min(1, scroll.offset || 0));
 
     // Visible at hero (0-0.1) and CTA section (0.85-1.0)
     // Fade out in middle sections

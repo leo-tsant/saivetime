@@ -41,7 +41,8 @@ function SandParticles({ count = 300 }: { count?: number }) {
   useFrame(() => {
     if (!particlesRef.current) return;
 
-    const scrollProgress = scroll.offset;
+    // Clamp to valid range [0, 1] to prevent errors during Safari bounce-back
+    const scrollProgress = Math.max(0, Math.min(1, scroll.offset || 0));
     const posArray = particlesRef.current.geometry.attributes.position.array as Float32Array;
 
     for (let i = 0; i < count; i++) {
@@ -212,7 +213,8 @@ function HourglassGlass() {
   useFrame((state) => {
     if (glassMaterial.uniforms) {
       glassMaterial.uniforms.uTime.value = state.clock.elapsedTime;
-      glassMaterial.uniforms.uScrollProgress.value = scroll.offset;
+      // Clamp to valid range [0, 1] to prevent errors during Safari bounce-back
+      glassMaterial.uniforms.uScrollProgress.value = Math.max(0, Math.min(1, scroll.offset || 0));
     }
   });
 
@@ -314,7 +316,8 @@ export function ElegantTorus() {
     if (!groupRef.current) return;
 
     const time = state.clock.elapsedTime;
-    const progress = scroll.offset;
+    // Clamp to valid range [0, 1] to prevent errors during Safari bounce-back
+    const progress = Math.max(0, Math.min(1, scroll.offset || 0));
     setScrollProgress(progress);
 
     // Simple animation:

@@ -26,10 +26,12 @@ export function ScrollCamera() {
   }, []);
 
   useFrame(() => {
-    const progress = scroll.offset;
+    // Clamp progress to valid range [0, 1] to prevent errors during Safari bounce-back
+    const progress = Math.max(0, Math.min(1, scroll.offset || 0));
 
     // Get position along the path
     const point = cameraPath.getPoint(progress);
+    if (!point) return;
 
     // Smoothly interpolate camera position
     camera.position.lerp(point, 0.05);
