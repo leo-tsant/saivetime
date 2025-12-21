@@ -3,24 +3,6 @@
 import { useRef } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
 
-const highlights = [
-  {
-    stat: "500+",
-    label: "Hours saved monthly",
-    icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
-  },
-  {
-    stat: "98%",
-    label: "Client satisfaction",
-    icon: "M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
-  },
-  {
-    stat: "24/7",
-    label: "Automation uptime",
-    icon: "M13 10V3L4 14h7v7l9-11h-7z",
-  },
-];
-
 export function AboutSaivetime() {
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -45,47 +27,43 @@ export function AboutSaivetime() {
           What is SaiveTime?
         </h2>
         <div ref={contentRef}>
-          <p className="text-neutral-600 text-lg leading-relaxed mb-8 max-w-2xl">
-            We&apos;re an AI automation agency that helps businesses reclaim their most
-            valuable resource: time. By combining cutting-edge artificial intelligence
-            with deep process expertise, we transform manual, repetitive workflows into
-            intelligent systems that run themselves.
+          <p className="text-neutral-600 text-lg leading-relaxed mb-6 max-w-2xl">
+            Two founders, one mission: help businesses reclaim their most valuable
+            resource. Time.
           </p>
-          <p className="text-neutral-500 text-base leading-relaxed mb-10 max-w-2xl">
-            Whether you&apos;re drowning in data entry, struggling with complex workflows,
-            or looking to scale without scaling headcount, we build custom solutions
-            that give your team the freedom to focus on what truly matters.
+          <p className="text-neutral-500 text-base leading-relaxed mb-6 max-w-2xl">
+            We&apos;re an AI automation agency specializing in lead generation and sales
+            automation. From cold email systems and LinkedIn outreach to inbound lead
+            qualification and CRM workflows, we build the infrastructure that fills
+            your pipeline and keeps it moving.
+          </p>
+          <p className="text-neutral-500 text-base leading-relaxed mb-8 max-w-2xl">
+            Every day, we work to deliver real value to our clients. No fluff, no
+            overcomplicated solutions. Just automation that works and results you
+            can measure.
           </p>
 
-          {/* Stats */}
-          <div className="flex flex-wrap gap-6">
-            {highlights.map((item, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-br from-white/70 to-white/30 backdrop-blur-md border border-white/50"
-              >
-                <div className="w-12 h-12 rounded-xl bg-neutral-900 flex items-center justify-center">
-                  <svg
-                    className="w-6 h-6 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1.5}
-                      d={item.icon}
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-2xl font-light text-neutral-900">{item.stat}</p>
-                  <p className="text-sm text-neutral-500">{item.label}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <a
+            href="https://calendly.com/saivetime/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white rounded-full font-medium hover:bg-neutral-800 transition-colors"
+          >
+            Let&apos;s Talk
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M7 17L17 7M17 7H7M17 7v10"
+              />
+            </svg>
+          </a>
         </div>
       </div>
     </section>

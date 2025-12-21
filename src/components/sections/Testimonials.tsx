@@ -60,10 +60,10 @@ export function Testimonials() {
       id="testimonials"
       className="min-h-screen flex items-center px-4 md:px-12 lg:px-20 py-12 overflow-hidden"
     >
-      <div className="w-full max-w-6xl mx-auto">
+      <div className="w-full md:w-2/3 lg:w-3/5 md:ml-[5%] lg:ml-[8%]">
         <h2
           ref={titleRef}
-          className="text-3xl md:text-4xl lg:text-5xl font-light text-neutral-800 mb-10 text-center"
+          className="text-3xl md:text-4xl lg:text-5xl font-light text-neutral-800 mb-10"
         >
           What our clients say
         </h2>
