@@ -24,7 +24,7 @@ export function AboutSaivetime() {
           ref={titleRef}
           className="text-3xl md:text-4xl lg:text-5xl font-light text-neutral-800 mb-4"
         >
-          What is SaiveTime?
+          What is SAIVETIME?
         </h2>
         <div ref={contentRef}>
           <p className="text-neutral-600 text-lg leading-relaxed mb-6 max-w-2xl">

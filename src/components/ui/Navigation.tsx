@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
+import Image from "next/image";
 import { gsap, useGSAP } from "@/lib/gsap";
 
 // Page positions: Hero=0, AboutSaivetime=1, About(Team)=2, Services=3, Testimonials=4, CTA=5
@@ -115,9 +116,16 @@ export function Navigation() {
     >
       <a
         href="/"
-        className="text-2xl font-light text-neutral-800 hover:text-[#ff5a36] transition-colors"
+        className="hover:opacity-80 transition-opacity -mt-4"
       >
-        saivetime
+        <Image
+          src="/logo.png"
+          alt="Saivetime"
+          width={427}
+          height={193}
+          className="h-16 w-auto object-contain"
+          priority
+        />
       </a>
 
       {/* Navigation Links */}

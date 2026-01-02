@@ -59,7 +59,7 @@ export function CTA() {
       {/* Footer */}
       <footer className="absolute bottom-8 left-0 right-0 text-center">
         <p className="text-sm text-neutral-400">
-          © {new Date().getFullYear()} saivetime. All rights reserved.
+          © {new Date().getFullYear()} SAIVETIME. All rights reserved.
         </p>
       </footer>
     </section>

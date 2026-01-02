@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SaiveTime - AI Automation Agency",
+  title: "SAIVETIME - AI Automation Agency",
   description:
     "AI-powered automation that gives you back your most valuable asset. Save time through intelligent automation solutions.",
   keywords: ["AI automation", "business automation", "time saving", "workflow automation"],
@@ -21,8 +21,12 @@ export const metadata: Metadata = {
     { name: "Leo Tsantarliotis" },
     { name: "Spilios Spiliopoulos" },
   ],
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/favicon.png",
+  },
   openGraph: {
-    title: "SaiveTime - AI Automation Agency",
+    title: "SAIVETIME - AI Automation Agency",
     description: "AI-powered automation that gives you back your most valuable asset",
     type: "website",
   },

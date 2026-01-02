@@ -17,7 +17,7 @@ const testimonials = [
   },
   {
     quote:
-      "Working with SaiveTime was a game-changer for our business. They understood exactly what we needed and delivered automation solutions that exceeded our expectations.",
+      "Working with SAIVETIME was a game-changer for our business. They understood exactly what we needed and delivered automation solutions that exceeded our expectations.",
     author: "Shaz Mathew",
     role: "Founder",
     company: "AttractAI",
