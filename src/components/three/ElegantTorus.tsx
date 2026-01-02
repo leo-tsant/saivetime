@@ -8,7 +8,6 @@ import { useScroll } from "@react-three/drei";
 // Sand particles falling through the hourglass
 function SandParticles({ count = 300 }: { count?: number }) {
   const particlesRef = useRef<THREE.Points>(null);
-  const scroll = useScroll();
 
   const { positions, velocities, sizes } = useMemo(() => {
     const pos = new Float32Array(count * 3);
@@ -41,8 +40,6 @@ function SandParticles({ count = 300 }: { count?: number }) {
   useFrame(() => {
     if (!particlesRef.current) return;
 
-    // Clamp to valid range [0, 1] to prevent errors during Safari bounce-back
-    const scrollProgress = Math.max(0, Math.min(1, scroll.offset || 0));
     const posArray = particlesRef.current.geometry.attributes.position.array as Float32Array;
 
     for (let i = 0; i < count; i++) {
@@ -51,7 +48,7 @@ function SandParticles({ count = 300 }: { count?: number }) {
       let y = posArray[idx + 1];
       let z = posArray[idx + 2];
 
-      const speed = velocities[i] * (1 + scrollProgress * 1.5);
+      const speed = velocities[i];
       y -= speed;
 
       const currentRadius = Math.sqrt(x * x + z * z);
